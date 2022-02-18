@@ -1,11 +1,10 @@
-from tabnanny import verbose
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
+
 
 class Budget(models.Model):
-    title = models.CharField('Название транзакции', max_length=100, default='Операция', unique=True)
+    title = models.CharField('Название транзакции', max_length=100, unique=True)
     value = models.FloatField('Бюджет', blank=True, default=0.0)
     revenue = models.FloatField('Доход', blank=True, default=0.0)
     consumption = models.FloatField('Расход', blank=True, default=0.0)
