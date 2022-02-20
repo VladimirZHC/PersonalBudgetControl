@@ -20,17 +20,26 @@
                     {{ sendForm.as_p }}
                     <button class="btn btn-info" type="submit"> Отправить </button>
                 </div>
-                <aside class="col-md-4 ml-4">
+                <aside class="col-md-5 ml-4">
                     <h4> История транзакций: </h4>
                     {% for post in history %}
                     <div class="blockside mt-2">
+                        {% if post.consumption %}
                             <h3>{{post.title}}</h3>
-                            <p> Бюджет: {{post.value}} рублей</p>
-                            <p> Доход: {{post.revenue}} рублей</p>
-                            <p> Расход: {{post.consumption}} рублей</p>
+                            <p> Бюджет/доход: {{post.value}} рублей</p>
+                            <p> Расход/стоимость изделия: {{post.consumption}} рублей</p>
                             <span class="text-muted">Время транзакции: {{post.pub_date}} </span>
+                        {% else %}
+                            <h3>{{post.title}}</h3>
+                            <p> Бюджет/доход: {{post.value}} рублей</p>
+                            <span class="text-muted">Время транзакции: {{post.pub_date}} </span>
+                        {% endif %}
                     </div>
                     {% endfor%}
+                    <div class="final mt-3">
+                        <p>Изначальный бюджет: <span class="style"> {{ main_res }} ₽ </span></p>
+                        <p>Финальный бюджет после транзакции: <span class="style"> {{consum}} ₽ </span></p>
+                    </div>
                 </aside>
 
             </div>

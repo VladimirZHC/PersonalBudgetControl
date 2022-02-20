@@ -6,9 +6,8 @@ class BudgetForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BudgetForm, self).__init__(*args, **kwargs)
         self.fields['title'].label = 'Название транзакции'
-        self.fields['value'].label = 'Бюджет'
-        self.fields['revenue'].label = 'Доход'
-        self.fields['consumption'].label = 'Расход'
+        self.fields['value'].label = 'Бюджет/доход'
+        self.fields['consumption'].label = 'Расход/Стоимость изделия'
         self.fields['pub_date'].label = 'Дата транзакции'
     
     
@@ -22,7 +21,6 @@ class BudgetForm(forms.ModelForm):
         fields = [
             'title',
             'value',
-            'revenue',
             'consumption',
             'pub_date'
         ]

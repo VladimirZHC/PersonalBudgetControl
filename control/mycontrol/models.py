@@ -6,7 +6,6 @@ from django.utils import timezone
 class Budget(models.Model):
     title = models.CharField('Название транзакции', max_length=100, unique=True)
     value = models.FloatField('Бюджет', blank=True, default=0.0)
-    revenue = models.FloatField('Доход', blank=True, default=0.0)
     consumption = models.FloatField('Расход', blank=True, default=0.0)
     pub_date = models.DateTimeField('Дата транзакции', default=timezone.now)
     
