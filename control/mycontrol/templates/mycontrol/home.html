@@ -18,7 +18,7 @@
                 <div class="col-md-6">
                     {% csrf_token %}
                     {{ sendForm.as_p }}
-                    <button class="btn btn-info" type="submit"> Отправить </button>
+                    <button class="btn btn-info mb-2" type="submit"> Отправить </button>
                 </div>
                 <aside class="col-md-5 ml-4">
                     <h4> История транзакций: </h4>
@@ -26,10 +26,9 @@
                     <div class="blockside mt-2">
                         {% if post.consumption %}
                             <h3>{{post.title}}</h3>
-                            <p> Бюджет/доход: {{post.value}} рублей</p>
                             <p> Расход/стоимость изделия: {{post.consumption}} рублей</p>
                             <span class="text-muted">Время транзакции: {{post.pub_date}} </span>
-                        {% else %}
+                        {% elif post.value %}
                             <h3>{{post.title}}</h3>
                             <p> Бюджет/доход: {{post.value}} рублей</p>
                             <span class="text-muted">Время транзакции: {{post.pub_date}} </span>
@@ -37,8 +36,8 @@
                     </div>
                     {% endfor%}
                     <div class="final mt-3">
-                        <p>Изначальный бюджет: <span class="style"> {{ main_res }} ₽ </span></p>
-                        <p>Финальный бюджет после транзакции: <span class="style"> {{consum}} ₽ </span></p>
+                        <p>Итог: <span class="style"> {{ main_res }} ₽ </span></p>
+                        <p>Итог после транзакций: <span class="style"> {{consum}} ₽ </span></p>
                     </div>
                 </aside>
 
